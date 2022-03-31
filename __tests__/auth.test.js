@@ -25,7 +25,7 @@ describe('backend-gitty routes', () => {
     const req = await request
       .agent(app)
       .get('/api/v1/github/login/callback?code=42')
-      .redirect(1);
+      .redirects(1);
 
     expect(req.body).toEqual({
       id: expect.any(String),
