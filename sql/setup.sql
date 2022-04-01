@@ -14,3 +14,9 @@ CREATE TABLE posts (
     title TEXT NOT NULL,
     CONTENT VARCHAR(225) NOT NULL
 );
+
+INSERT INTO
+posts (content)
+VALUES
+('first post', 'hello'),
+('second post', 'bye');
