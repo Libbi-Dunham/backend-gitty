@@ -33,4 +33,21 @@ describe('backend-gitty routes', () => {
     const res = await agent.get('/api/v1/posts');
     expect(res.body).toEqual([firstPost, secondPost]);
   });
+
+  it('should be able to create a post w/ 255 characters', async () => {
+    const agent = request.agent(app);
+
+    await agent.get('/api/v1/github/login/callback?code=42').redirects(1);
+
+    await agent.get('/login/callback');
+    const res = await agent
+      .post('/api/v1/posts')
+      .send({ title: 'third post', content: 'see ya' });
+
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      title: 'third post',
+      content: 'see ya',
+    });
+  });
 });
