@@ -16,7 +16,7 @@ CREATE TABLE posts (
 );
 
 INSERT INTO
-posts (content)
+posts (title, content)
 VALUES
 ('first post', 'hello'),
 ('second post', 'bye');
